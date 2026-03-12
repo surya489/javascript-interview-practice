@@ -76,7 +76,7 @@ function removeDuplicates (array) {
     return [...new Set(array)];
 }
 
-console.log(removeDuplicates([1,2,2,2,2,9,8,4,2,7,1,0,2,8,5]));
+console.log("Remove Duplicates", removeDuplicates([1,2,2,2,2,9,8,4,2,7,1,0,2,8,5]));
 
 // Count Once Occurance In An Array
 
@@ -272,6 +272,200 @@ function charOccuranceUsingForLoop (str, char) {
 }
 
 charOccuranceUsingForLoop("santhamani", 'n');
+
+// Write a Program to convert Celsius to Fahrenheit in JavaScript
+
+const celciusToFahrenheit = (celcius) => {
+    const fahrenheit = (celcius * 9/5) + 32;
+
+    return fahrenheit;
+}
+
+console.log(celciusToFahrenheit(20));
+
+// Write a Program to convert Fahrenheit to Celsius in JavaScript
+
+const fahrenheitToCelcius = (fahrenheit) => {
+    const celcius = (fahrenheit - 32) * 5/9;
+
+    return celcius;
+}
+
+console.log(fahrenheitToCelcius(68));
+
+// Write a Program to sort an array in Ascending Order in JavaScript
+
+const sortArrayInAscending = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] > arr[j]) {
+                let tempStore = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tempStore;
+            }
+        }
+    }
+    return arr;
+}
+
+console.log(sortArrayInAscending([19, 89, 16, 43, 4, 1, -63]));
+
+// write a Program to sort an array in Descending Order in JavaScript
+
+const functionToOrderArrayInDesending = (arr) => {
+    let n = arr.length;
+
+    for(let i = 0; i < n; i++) {
+        for (let j = 0; j < n - 1 - i; j++) {
+            if (arr[j] < arr[j + 1]) {
+                let tempStore = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tempStore;
+            }
+        }
+    }
+
+    return arr;
+
+}
+
+console.log(functionToOrderArrayInDesending([0, 89, 100, 77, 2, 106]));
+
+// Write a Program to merge two arrays in JavaScript
+
+function mergeArrays (arr1, arr2) {
+    return arr1.concat(arr2);
+}
+
+console.log(mergeArrays(sortArrayInAscending([0, 89, 100, 77, 2, 106]), sortArrayInAscending([19, 89, 16, 43, 4, 1, -63])));
+
+// Find the Intersection of Two Arrays in JavaScript
+
+const findInterSectionofTwoArrays = (arr1, arr2) => {
+    const interAction = new Set(arr2);
+    const arr1InterAct = new Set(arr1);
+    console.log(arr1InterAct);
+
+    console.log(interAction);
+
+    return [...arr1InterAct].filter(value => interAction.has(value));
+}
+
+console.log(findInterSectionofTwoArrays([5, 6, 7, 7], [6, 7, 8, 7]));
+
+function findIntersection(arr1, arr2) {
+
+    return arr1.filter(item => arr2.includes(item));
+
+}
+
+console.log(findIntersection([1,2,3,4], [3,4,5,6]));
+
+// Find the Union of Two Arrays in JavaScript
+
+function arrayUnion (arr1, arr2) {
+    return new Set([...arr1, ...arr2]);
+}
+
+console.log(arrayUnion([1, 2, 3], [2, 3, 4]));
+
+// Check if a Number is Even or Odd in JavaScript
+
+function isEven (num) {
+    return num % 2 === 0;
+}
+
+console.log(isEven(3));
+
+// Write a Program to find the minimum value in an array in JavaScript
+
+function findMinValue (arr) {
+    let minimum = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < minimum) {
+            minimum = arr[i];
+        }
+    }
+    return minimum;
+}
+
+console.log(findMinValue([5, 6, 7]));
+
+function findMinValueUsingMin (arr) {
+    return Math.min(...arr);
+}
+
+
+console.log(findMinValueUsingMin([5, 6, 7, 0]));
+
+// Check if a String Contains Another String in JavaScript
+
+function checkStringCOntains (str, subStr) {
+    return str.indexOf(subStr) !== -1;
+}
+
+console.log(checkStringCOntains('GeeksForGeeks', 'For'));
+
+function checkStringUsingIncludes (string, subString) {
+    return string.includes(subString);
+}
+
+console.log(checkStringUsingIncludes('GeeksForGeeks', 'hi'));
+
+// using logic
+
+function checkStringExists (str, sub) {
+    for (let i = 0; i < str.length; i++) {
+        let match = true;
+        for(let j = 0; j < sub.length; j++) {
+            if(str[i + j] !== sub[j]) {
+                match = false;
+                break;
+            }
+        }
+        if (match) return true;
+    }
+    return false;
+}
+
+console.log(checkStringExists("javascript", "java"));
+
+// Find the First Non-Repeated Character in a String in JavaScript
+
+function findNonRepeatString (str) {
+    const charCount = {};
+
+    for (let char of str) {
+        charCount[char] = (charCount[char] || 0) + 1;
+    }
+
+    for(let char of str) {
+        if (charCount[char] === 1) {
+            return char;
+        }
+    }
+    return null;
+}
+
+console.log(findNonRepeatString('GeeksForGeeks'));
+
+function maxDifference(arr) {
+    let min = arr[0]
+    let maxDiff = 0;
+
+    for (let i = 1; i < arr.length; i++) {
+        const diff = arr[i] - min;
+        console.log(`diff :` , diff);
+        console.log("arr[i]", arr[i]);
+        console.log("maxDiff b4", maxDiff);
+        maxDiff = Math.max(maxDiff, diff);
+        min = Math.min(min, arr[i]);
+        // console.log(maxDiff);
+    }
+    return maxDiff;
+}
+
+console.log(maxDifference([1, 2, 90, 10, 110]));
 
 // function to add property to an object
 
